@@ -2,6 +2,7 @@ from matrices.matriz import Matriz
 
 class Operaciones:
 
+    # 创建矩阵，也就是初始矩阵
     def matriz(self, filas, columnas):
         while True:
             matriz = []
@@ -36,6 +37,7 @@ class Operaciones:
         self.matriz = m
         return m
 
+    # 矩阵相加
     def suma(self, m1, m2):
         suma_m = []
 
@@ -48,6 +50,21 @@ class Operaciones:
                 temp.append(m1.valores[i][j] + m2.valores[i][j])
 
             suma_m.append(temp)
-            
-        return suma_m
 
+        return Matriz(suma_m)
+
+    # 矩阵相减
+    def resta(self, m1, m2):
+        resta_m = []
+
+        if m1.filas != m2.filas or m1.columnas != m2.columnas:
+            return print("Error, Las columnas y filas debe de ser igua para hacer reta!")
+            
+        for i in range(m1.filas):
+            temp = []
+            for j in range(m1.columnas):
+                temp.append(m1.valores[i][j] - m2.valores[i][j])
+
+            resta_m.append(temp)
+            
+        return Matriz(resta_m)

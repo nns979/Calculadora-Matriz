@@ -1,9 +1,9 @@
 
 
 class Matriz:
+    # 计算矩阵(Matriz)所有的列数是否一样
     def __init__(self, valores):
-
-        # 计算矩阵(Matriz)所有的列数是否一样
+        
         columnas = None
         for filas in valores:
             if columnas == None:
@@ -27,7 +27,7 @@ class Matriz:
         
         return self.valores[idx]
     
-
+    # 打印矩阵
     def __str__(self):
         imprimir = ""
         for i in range(len(self.valores)):
