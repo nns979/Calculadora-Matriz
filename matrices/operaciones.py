@@ -2,7 +2,6 @@ from matrices.matriz import Matriz
 
 class Operaciones:
 
-
     def matriz(self, filas, columnas):
         while True:
             matriz = []
@@ -37,4 +36,18 @@ class Operaciones:
         self.matriz = m
         return m
 
-    
+    def suma(self, m1, m2):
+        suma_m = []
+
+        if m1.filas != m2.filas or m1.columnas != m2.columnas:
+            return print("Error, Las columnas y filas debe de ser igua para hacer suma!")
+            
+        for i in range(m1.filas):
+            temp = []
+            for j in range(m1.columnas):
+                temp.append(m1.valores[i][j] + m2.valores[i][j])
+
+            suma_m.append(temp)
+            
+        return suma_m
+

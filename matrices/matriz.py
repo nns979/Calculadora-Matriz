@@ -1,37 +1,39 @@
 
+
 class Matriz:
-    def __init__(self, values):
+    def __init__(self, valores):
 
         # 计算矩阵(Matriz)所有的列数是否一样
-        cols = None
-        for row in values:
-            if cols == None:
+        columnas = None
+        for filas in valores:
+            if columnas == None:
 
-                cols = len(row)
-            elif cols != len(row):
-                raise ValueError("La matriz debe tener las mismas columnas en cada fila!")
+                columnas = len(filas)
+            elif columnas != len(filas):
+                raise ValueError("La matriz debe tener las mismas columnass en cada fila!")
             
         
-        if cols == 0:
-            raise ValueError("Las filas deben tener al menos una columna.")
+        if columnas == 0:
+            raise ValueError("Las filas deben tener al menos una columnas.")
         
-        self.cols = cols
-        self.rows = len(values)
-        self.values = values
+        self.columnas = columnas
+        self.filas = len(valores)
+        self.valores = valores
         
     # 获取idx位置的数据
     def __getitem__(self, idx):
-        if idx < 0 or idx >= self.rows:
+        if idx < 0 or idx >= self.filas:
             raise IndexError(f"Indice para fila fuera de rango: ({idx})")
         
-        return self.values[idx]
+        return self.valores[idx]
     
+
     def __str__(self):
         imprimir = ""
-        for i in range(self.matriz.values):
-            imprimir += str(self.matriz.values[i])
+        for i in range(len(self.valores)):
+            imprimir += str(self.valores[i])
             imprimir += "\n"
-        
         return imprimir
+
 
         
