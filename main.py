@@ -1,4 +1,6 @@
 from matrices.operaciones import Operaciones
+from matrices.matriz import Matriz
+from pathlib import Path
 import os
 
 while True:
@@ -8,9 +10,13 @@ while True:
         print("2) Resta de matriz")
         print("3) Multipicacion por escalar")
         print("4) Multiplicacion de matriz")
-        print("5) Matriz transpuesta")
-        print("7) Salir")
+        print("5) Matriz inversa")
+        print("6) Matriz transpuesta")
+        print("7) Sistema de ecuaciones lineales(No terminado)")
+        print("8) Guadar mi respuesta")
+        print("9) Salir")
         opcion = int(input(""))
+
 
         if opcion == 1 or opcion == 2:
 
@@ -33,10 +39,12 @@ while True:
 
             if opcion == 1:
                 print("Suma de matriz")
-                print(Operaciones().suma(m1, m2))
+                resultado = Operaciones().suma(m1, m2)
+                print(resultado)
             if opcion == 2:
                 print("Resta de matriz")
-                print(Operaciones().resta(m1, m2))
+                resultado = Operaciones().resta(m1, m2)
+                print(resultado)
 
         if opcion == 3:
             columnas = int(input("Columnas de la matriz 1: "))
@@ -51,7 +59,8 @@ while True:
             print("Escalar: ", c1, sep = "")
             print("")
             print("Multipicacion por escalar")
-            print(Operaciones().multi_escalar(c1, matriz))
+            resultado = Operaciones().multi_escalar(c1, matriz)
+            print(resultado)
 
         if opcion == 4:
             columnas = int(input("Columnas de la matriz A: "))
@@ -71,9 +80,23 @@ while True:
             print(m2)
             print("")
             print("Matriz multiplicado: ")
-            print(Operaciones().multiplicacion(m1, m2))
-        
+            resultado = Operaciones().multiplicacion(m1, m2)
+            print(resultado)
+
         if opcion == 5:
+            columnas = int(input("Columnas de la matriz A: "))
+            filas = int(input("Filas de la matriz A: "))
+
+            matriz = Operaciones().matriz(filas, columnas)
+            os.system('cls')
+            print("Matriz Original:")
+            print(matriz)
+            print("")
+            print("Matriz Inversa")
+            resultado = Operaciones().inversa(matriz)
+            print(resultado)
+        
+        if opcion == 6:
             columnas = int(input("Columnas de la matriz: "))
             filas = int(input("Filas de la matriz: "))
             matriz = Operaciones().matriz(filas, columnas)
@@ -83,9 +106,23 @@ while True:
             print(matriz)
             print("")
             print("Matriz transpuesta")
-            print(Operaciones().transpuesta(matriz))
-
+            resultado = Operaciones().transpuesta(matriz)
+            print(resultado)
+        
         if opcion == 7:
+            print("No terminado..")
+
+        # 保存
+        if opcion == 8:
+            archivo = Path(__file__).parent / ".." / "Calculadora-Matriz" / "resources" / "matrices" / "matriz.txt"
+            with open(archivo, "w") as f:
+                f.write(str(resultado))
+            
+            print("Su resultado guadardo en carpeta / .. / Calculadora-Matriz / resources / matrices / matriz.txt")
+
+        if opcion == 9:
             break
+
     except ValueError:
         print("Error")
+

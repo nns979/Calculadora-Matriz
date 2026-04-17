@@ -101,6 +101,52 @@ class Operaciones:
         
         return Matriz(multipicar)
     
+    # 矩阵逆转
+    def inversa(self, matriz):
+        n = matriz.filas
+        
+        if n != matriz.columnas:
+            print("Error! Debe ser matriz cuadrada")
+            return None
+
+        aug = []
+        for i in range(n):
+            fila = []
+            for j in range(n):
+                fila.append(matriz[i][j])
+            
+            for j in range(n):
+                fila.append(1 if i == j else 0)
+            
+            aug.append(fila)
+
+        for i in range(n):
+            
+            if aug[i][i] == 0:
+                for k in range(i+1, n):
+                    if aug[k][i] != 0:
+                        aug[i], aug[k] = aug[k], aug[i]
+                        break
+                else:
+                    print("No tiene inversa")
+                    return None
+            
+            pivote = aug[i][i]
+            for j in range(2*n):
+                aug[i][j] /= pivote
+
+            for k in range(n):
+                if k != i:
+                    factor = aug[k][i]
+                    for j in range(2*n):
+                        aug[k][j] -= factor * aug[i][j]
+
+        inversa = []
+        for i in range(n):
+            inversa.append(aug[i][n:])
+
+        return Matriz(inversa)
+
     # 矩阵转置
     def transpuesta(self, matriz):
         temp = []
