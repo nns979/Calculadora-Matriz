@@ -68,3 +68,14 @@ class Operaciones:
             resta_m.append(temp)
             
         return Matriz(resta_m)
+    
+    # 向量矩阵
+    def multi_escalar(self, c1, matriz):
+        escalar = []
+        for i in range(matriz.filas):
+            temp = []
+            for j in range(matriz.columnas):
+                temp.append(c1 * matriz.valores[i][j])
+
+            escalar.append(temp)
+        return Matriz(escalar)
