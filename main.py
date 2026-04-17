@@ -7,6 +7,8 @@ while True:
         print("1) Suma de matriz")
         print("2) Resta de matriz")
         print("3) Multipicacion por escalar")
+        print("4) Multiplicacion de matriz")
+        print("7) Salir")
         opcion = int(input(""))
 
         if opcion == 1 or opcion == 2:
@@ -46,6 +48,27 @@ while True:
             print("Escalar: ", c1, sep = "")
             print("")
             print(Operaciones().multi_escalar(c1, matriz))
-        break
+
+        if opcion == 4:
+            columnas = int(input("Columnas de la matriz A: "))
+            filas = int(input("Filas de la matriz A: "))
+
+            m1 = Operaciones().matriz(filas, columnas)
+
+            columnas = int(input("Columnas de la matriz B: "))
+            filas = int(input("Filas de la matriz B: "))
+
+            m2 = Operaciones().matriz(filas, columnas)
+
+            os.system('cls')
+            print("Matriz A: ")
+            print(m1)
+            print("Matriz B: ")
+            print(m2)
+
+            print(Operaciones().multiplicacion(m1, m2))
+
+        if opcion == 7:
+            break
     except ValueError:
         print("Error")

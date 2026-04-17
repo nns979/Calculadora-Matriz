@@ -42,7 +42,7 @@ class Operaciones:
         suma_m = []
 
         if m1.filas != m2.filas or m1.columnas != m2.columnas:
-            return print("Error, Las columnas y filas debe de ser igua para hacer suma!")
+            return print("Error! Para hacer suma, Las columnas y filas debes de ser igual!")
             
         for i in range(m1.filas):
             temp = []
@@ -58,7 +58,7 @@ class Operaciones:
         resta_m = []
 
         if m1.filas != m2.filas or m1.columnas != m2.columnas:
-            return print("Error, Las columnas y filas debe de ser igua para hacer reta!")
+            return print("Error! Para hacer resta, Las columnas y filas debes de ser igual!")
             
         for i in range(m1.filas):
             temp = []
@@ -79,3 +79,24 @@ class Operaciones:
 
             escalar.append(temp)
         return Matriz(escalar)
+    
+    # 矩阵互乘
+    def multiplicacion(self, m1, m2):
+        multipicar = []
+        
+        if m1.columnas != m2.filas:
+            return print("Error! Columna de primer matriz y la fila de 2 matriz debe de ser igual!")
+        
+        for i in range(m1.filas):
+            temp = []
+    
+            for j in range(m2.columnas):
+                suma = 0
+
+                for k in range(m1.columnas):
+                    suma += m1[i][k] * m2[k][j]
+                temp.append(suma)
+
+            multipicar.append(temp)
+        
+        return Matriz(multipicar)
