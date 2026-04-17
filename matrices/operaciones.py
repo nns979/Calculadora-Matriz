@@ -100,3 +100,21 @@ class Operaciones:
             multipicar.append(temp)
         
         return Matriz(multipicar)
+    
+    # 矩阵转置
+    def transpuesta(self, matriz):
+        temp = []
+        for i in range(matriz.filas):
+            for j in range(matriz.columnas):
+                temp.append(matriz[j][i])
+
+        transpuesta = []
+        cont = 0
+        for i in range(matriz.columnas):
+            fila = []
+            for j in range(matriz.filas):
+                fila.append(temp[cont])
+                cont += 1
+            transpuesta.append(fila)
+
+        return Matriz(transpuesta)
