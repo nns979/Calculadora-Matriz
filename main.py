@@ -14,7 +14,8 @@ while True:
         print("6) Matriz transpuesta")
         print("7) Sistema de ecuaciones lineales(No terminado)")
         print("8) Guadar mi respuesta")
-        print("9) Salir")
+        print("9) Leer matriz desde archivo")
+        print("10) Salir")
         opcion = int(input(""))
 
 
@@ -114,13 +115,35 @@ while True:
 
         # 保存
         if opcion == 8:
-            archivo = Path(__file__).parent / ".." / "Calculadora-Matriz" / "resources" / "matrices" / "matriz.txt"
+            archivo = Path(__file__).parent / ".." / "resources" / "matrices" / "matriz.txt"
             with open(archivo, "w") as f:
                 f.write(str(resultado))
             
-            print("Su resultado guadardo en carpeta / .. / Calculadora-Matriz / resources / matrices / matriz.txt")
+            print("Su resultado guadardo en carpeta / .. / resources / matrices / matriz.txt")
 
         if opcion == 9:
+            archivo = Path(__file__).parent / ".." / "Calculadora-Matriz" / "resources" / "matrices" / "matriz.txt"
+            matriz = []
+
+            with open(archivo, "r") as f:
+
+                for linea in f:
+                    if not linea.strip():
+                        continue
+                    
+                    fila = linea.strip().replace("[","").replace("]","").replace(",","").split()
+                    temp = []
+                    for x in fila:
+                        temp.append(float(x))
+
+                    matriz.append(temp)
+
+            os.system('cls')
+            m = Matriz(matriz)
+            print("Matriz del archivo:")
+            print(m)
+
+        if opcion == 10:
             break
 
     except ValueError:
